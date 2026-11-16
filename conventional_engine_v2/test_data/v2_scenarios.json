@@ -1,0 +1,957 @@
+[
+  {
+    "id": "V2-001",
+    "category": "api_backend",
+    "name": "HTTP 400 client",
+    "input_format": "JSON",
+    "payload": "[{\"status_code\": 400}]",
+    "context": {
+      "api": {
+        "status_code_field": "status_code"
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "HTTP_CLIENT_ERROR"
+  },
+  {
+    "id": "V2-002",
+    "category": "api_backend",
+    "name": "HTTP 401 client",
+    "input_format": "JSON",
+    "payload": "[{\"status_code\": 401}]",
+    "context": {
+      "api": {
+        "status_code_field": "status_code"
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "HTTP_CLIENT_ERROR"
+  },
+  {
+    "id": "V2-003",
+    "category": "api_backend",
+    "name": "HTTP 403 client",
+    "input_format": "JSON",
+    "payload": "[{\"status_code\": 403}]",
+    "context": {
+      "api": {
+        "status_code_field": "status_code"
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "HTTP_CLIENT_ERROR"
+  },
+  {
+    "id": "V2-004",
+    "category": "api_backend",
+    "name": "HTTP 404 client",
+    "input_format": "JSON",
+    "payload": "[{\"status_code\": 404}]",
+    "context": {
+      "api": {
+        "status_code_field": "status_code"
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "HTTP_CLIENT_ERROR"
+  },
+  {
+    "id": "V2-005",
+    "category": "api_backend",
+    "name": "HTTP 429 client",
+    "input_format": "JSON",
+    "payload": "[{\"status_code\": 429}]",
+    "context": {
+      "api": {
+        "status_code_field": "status_code"
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "HTTP_CLIENT_ERROR"
+  },
+  {
+    "id": "V2-006",
+    "category": "api_backend",
+    "name": "HTTP 500 server",
+    "input_format": "JSON",
+    "payload": "[{\"status_code\": 500}]",
+    "context": {
+      "api": {
+        "status_code_field": "status_code"
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "HTTP_SERVER_ERROR"
+  },
+  {
+    "id": "V2-007",
+    "category": "api_backend",
+    "name": "HTTP 502 server",
+    "input_format": "JSON",
+    "payload": "[{\"status_code\": 502}]",
+    "context": {
+      "api": {
+        "status_code_field": "status_code"
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "HTTP_SERVER_ERROR"
+  },
+  {
+    "id": "V2-008",
+    "category": "api_backend",
+    "name": "HTTP 503 server",
+    "input_format": "JSON",
+    "payload": "[{\"status_code\": 503}]",
+    "context": {
+      "api": {
+        "status_code_field": "status_code"
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "HTTP_SERVER_ERROR"
+  },
+  {
+    "id": "V2-009",
+    "category": "api_backend",
+    "name": "HTTP 504 server",
+    "input_format": "JSON",
+    "payload": "[{\"status_code\": 504}]",
+    "context": {
+      "api": {
+        "status_code_field": "status_code"
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "HTTP_SERVER_ERROR"
+  },
+  {
+    "id": "V2-010",
+    "category": "api_backend",
+    "name": "HTTP success",
+    "input_format": "JSON",
+    "payload": "[{\"status_code\":200}]",
+    "context": {
+      "api": {
+        "status_code_field": "status_code"
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-011",
+    "category": "api_backend",
+    "name": "Invalid status",
+    "input_format": "JSON",
+    "payload": "[{\"status_code\":\"bad\"}]",
+    "context": {
+      "api": {
+        "status_code_field": "status_code"
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "INVALID_HTTP_STATUS"
+  },
+  {
+    "id": "V2-012",
+    "category": "api_backend",
+    "name": "No status",
+    "input_format": "JSON",
+    "payload": "[{\"body\":{\"ok\":true}}]",
+    "context": {
+      "api": {
+        "status_code_field": "status_code"
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-013",
+    "category": "etl",
+    "name": "Null required",
+    "input_format": "JSON",
+    "payload": "[{\"event_id\":\"E1\",\"customer_id\":null}]",
+    "context": {
+      "etl": {
+        "unique_keys": [
+          "event_id"
+        ],
+        "non_null_fields": [
+          "customer_id"
+        ]
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "NULL_REQUIRED_VALUE"
+  },
+  {
+    "id": "V2-014",
+    "category": "etl",
+    "name": "Empty required",
+    "input_format": "JSON",
+    "payload": "[{\"event_id\":\"E1\",\"customer_id\":\"\"}]",
+    "context": {
+      "etl": {
+        "unique_keys": [
+          "event_id"
+        ],
+        "non_null_fields": [
+          "customer_id"
+        ]
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "NULL_REQUIRED_VALUE"
+  },
+  {
+    "id": "V2-015",
+    "category": "etl",
+    "name": "Duplicate key",
+    "input_format": "CSV",
+    "payload": "event_id,customer_id\nE1,C1\nE1,C2\n",
+    "context": {
+      "etl": {
+        "unique_keys": [
+          "event_id"
+        ],
+        "non_null_fields": [
+          "customer_id"
+        ]
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "DUPLICATE_KEY"
+  },
+  {
+    "id": "V2-016",
+    "category": "etl",
+    "name": "Unique keys",
+    "input_format": "CSV",
+    "payload": "event_id,customer_id\nE1,C1\nE2,C2\n",
+    "context": {
+      "etl": {
+        "unique_keys": [
+          "event_id"
+        ],
+        "non_null_fields": [
+          "customer_id"
+        ]
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-017",
+    "category": "etl",
+    "name": "Null unique key",
+    "input_format": "CSV",
+    "payload": "event_id,customer_id\n,C1\n,C2\n",
+    "context": {
+      "etl": {
+        "unique_keys": [
+          "event_id"
+        ],
+        "non_null_fields": [
+          "customer_id"
+        ]
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-018",
+    "category": "etl",
+    "name": "Missing required",
+    "input_format": "JSON",
+    "payload": "[{\"event_id\":\"E1\"}]",
+    "context": {
+      "etl": {
+        "unique_keys": [
+          "event_id"
+        ],
+        "non_null_fields": [
+          "customer_id"
+        ]
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "NULL_REQUIRED_VALUE"
+  },
+  {
+    "id": "V2-019",
+    "category": "etl",
+    "name": "Empty CSV",
+    "input_format": "CSV",
+    "payload": "",
+    "context": {},
+    "expected_status": "INVALID",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-020",
+    "category": "etl",
+    "name": "Normal CSV",
+    "input_format": "CSV",
+    "payload": "id,amount\n1,10\n2,20\n",
+    "context": {},
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-021",
+    "category": "etl",
+    "name": "JSON array",
+    "input_format": "JSON",
+    "payload": "[{\"id\":1},{\"id\":2}]",
+    "context": {},
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-022",
+    "category": "etl",
+    "name": "JSON scalar",
+    "input_format": "JSON",
+    "payload": "\"hello\"",
+    "context": {},
+    "expected_status": "INVALID",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-023",
+    "category": "etl",
+    "name": "Duplicate customer",
+    "input_format": "JSON",
+    "payload": "[{\"customer_id\":\"C1\"},{\"customer_id\":\"C1\"}]",
+    "context": {
+      "etl": {
+        "unique_keys": [
+          "customer_id"
+        ]
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "DUPLICATE_KEY"
+  },
+  {
+    "id": "V2-024",
+    "category": "etl",
+    "name": "Single CSV row",
+    "input_format": "CSV",
+    "payload": "id,value\n1,A\n",
+    "context": {},
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-025",
+    "category": "sre_devops",
+    "name": "DB timeout",
+    "input_format": "LOGS",
+    "payload": "2026-11-02 10:30:15 ERROR checkout: Database connection timeout",
+    "context": {},
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "DATABASE_TIMEOUT"
+  },
+  {
+    "id": "V2-026",
+    "category": "sre_devops",
+    "name": "DB refused",
+    "input_format": "LOGS",
+    "payload": "2026-11-02 10:30:15 ERROR checkout: DB connection refused",
+    "context": {},
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "DATABASE_CONNECTION_REFUSED"
+  },
+  {
+    "id": "V2-027",
+    "category": "sre_devops",
+    "name": "Connection reset",
+    "input_format": "LOGS",
+    "payload": "2026-11-02 10:30:15 ERROR checkout: Connection reset by peer",
+    "context": {},
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "NETWORK_CONNECTION_RESET"
+  },
+  {
+    "id": "V2-028",
+    "category": "sre_devops",
+    "name": "DNS failure",
+    "input_format": "LOGS",
+    "payload": "2026-11-02 10:30:15 ERROR checkout: DNS resolution failed",
+    "context": {},
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "DNS_RESOLUTION_FAILURE"
+  },
+  {
+    "id": "V2-029",
+    "category": "sre_devops",
+    "name": "Network unreachable",
+    "input_format": "LOGS",
+    "payload": "2026-11-02 10:30:15 ERROR checkout: Network is unreachable",
+    "context": {},
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "NETWORK_UNREACHABLE"
+  },
+  {
+    "id": "V2-030",
+    "category": "sre_devops",
+    "name": "Unavailable",
+    "input_format": "LOGS",
+    "payload": "2026-11-02 10:30:15 ERROR checkout: Service unavailable",
+    "context": {},
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "SERVICE_UNAVAILABLE"
+  },
+  {
+    "id": "V2-031",
+    "category": "sre_devops",
+    "name": "Request timeout",
+    "input_format": "LOGS",
+    "payload": "2026-11-02 10:30:15 ERROR checkout: Request timed out",
+    "context": {},
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "REQUEST_TIMEOUT"
+  },
+  {
+    "id": "V2-032",
+    "category": "sre_devops",
+    "name": "Memory exhausted",
+    "input_format": "LOGS",
+    "payload": "2026-11-02 10:30:15 ERROR checkout: Java process out of memory",
+    "context": {},
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "OUT_OF_MEMORY"
+  },
+  {
+    "id": "V2-033",
+    "category": "sre_devops",
+    "name": "Disk full",
+    "input_format": "LOGS",
+    "payload": "2026-11-02 10:30:15 ERROR checkout: No space left on device",
+    "context": {},
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "DISK_FULL"
+  },
+  {
+    "id": "V2-034",
+    "category": "sre_devops",
+    "name": "Null pointer",
+    "input_format": "LOGS",
+    "payload": "2026-11-02 10:30:15 ERROR checkout: NullPointerException in handler",
+    "context": {},
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "NULL_POINTER_EXCEPTION"
+  },
+  {
+    "id": "V2-035",
+    "category": "sre_devops",
+    "name": "Internal server error",
+    "input_format": "LOGS",
+    "payload": "2026-11-02 10:30:15 ERROR checkout: Internal server error",
+    "context": {},
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "INTERNAL_SERVER_ERROR"
+  },
+  {
+    "id": "V2-036",
+    "category": "sre_devops",
+    "name": "Unknown log",
+    "input_format": "LOGS",
+    "payload": "2026-11-02 10:30:15 ERROR checkout: Strange event",
+    "context": {},
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-037",
+    "category": "sre_devops",
+    "name": "Malformed log",
+    "input_format": "LOGS",
+    "payload": "ERROR checkout failed",
+    "context": {},
+    "expected_status": "UNSUPPORTED",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-038",
+    "category": "sre_devops",
+    "name": "CPU high",
+    "input_format": "METRICS",
+    "payload": "cpu_usage_percent{service=\"checkout\"} 96",
+    "context": {
+      "sre": {
+        "metric_thresholds": {
+          "cpu_usage_percent": {
+            "max": 90
+          }
+        }
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "METRIC_ABOVE_THRESHOLD"
+  },
+  {
+    "id": "V2-039",
+    "category": "sre_devops",
+    "name": "CPU normal",
+    "input_format": "METRICS",
+    "payload": "cpu_usage_percent{service=\"checkout\"} 40",
+    "context": {
+      "sre": {
+        "metric_thresholds": {
+          "cpu_usage_percent": {
+            "max": 90
+          }
+        }
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-040",
+    "category": "sre_devops",
+    "name": "Memory high JSON",
+    "input_format": "METRICS",
+    "payload": "[{\"metric_name\":\"memory_usage_percent\",\"value\":95}]",
+    "context": {
+      "sre": {
+        "metric_thresholds": {
+          "memory_usage_percent": {
+            "max": 90
+          }
+        }
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "METRIC_ABOVE_THRESHOLD"
+  },
+  {
+    "id": "V2-041",
+    "category": "sre_devops",
+    "name": "No metric rule",
+    "input_format": "METRICS",
+    "payload": "request_count{service=\"checkout\"} 120",
+    "context": {},
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-042",
+    "category": "sre_devops",
+    "name": "Malformed metric",
+    "input_format": "METRICS",
+    "payload": "cpu_usage_percent{service=\"checkout\"} high",
+    "context": {},
+    "expected_status": "UNSUPPORTED",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-043",
+    "category": "sre_devops",
+    "name": "Empty metrics",
+    "input_format": "METRICS",
+    "payload": "",
+    "context": {},
+    "expected_status": "INVALID",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-044",
+    "category": "data_platform",
+    "name": "Missing event ID",
+    "input_format": "JSON",
+    "payload": "[{\"service\":\"orders\"}]",
+    "context": {
+      "data_platform": {
+        "required_fields": [
+          "event_id",
+          "service"
+        ]
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "MISSING_REQUIRED_FIELD"
+  },
+  {
+    "id": "V2-045",
+    "category": "data_platform",
+    "name": "Required fields present",
+    "input_format": "JSON",
+    "payload": "[{\"event_id\":\"E1\",\"service\":\"orders\"}]",
+    "context": {
+      "data_platform": {
+        "required_fields": [
+          "event_id",
+          "service"
+        ]
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-046",
+    "category": "data_platform",
+    "name": "String mismatch",
+    "input_format": "JSON",
+    "payload": "[{\"event_id\":123}]",
+    "context": {
+      "data_platform": {
+        "field_types": {
+          "event_id": "string"
+        }
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "FIELD_TYPE_MISMATCH"
+  },
+  {
+    "id": "V2-047",
+    "category": "data_platform",
+    "name": "Number mismatch",
+    "input_format": "JSON",
+    "payload": "[{\"latency_ms\":\"fast\"}]",
+    "context": {
+      "data_platform": {
+        "field_types": {
+          "latency_ms": "number"
+        }
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "FIELD_TYPE_MISMATCH"
+  },
+  {
+    "id": "V2-048",
+    "category": "data_platform",
+    "name": "Integer accepted",
+    "input_format": "JSON",
+    "payload": "[{\"retry_count\":3}]",
+    "context": {
+      "data_platform": {
+        "field_types": {
+          "retry_count": "integer"
+        }
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-049",
+    "category": "data_platform",
+    "name": "Boolean mismatch",
+    "input_format": "JSON",
+    "payload": "[{\"is_active\":\"true\"}]",
+    "context": {
+      "data_platform": {
+        "field_types": {
+          "is_active": "boolean"
+        }
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "FIELD_TYPE_MISMATCH"
+  },
+  {
+    "id": "V2-050",
+    "category": "data_platform",
+    "name": "Object accepted",
+    "input_format": "JSON",
+    "payload": "[{\"metadata\":{\"region\":\"west\"}}]",
+    "context": {
+      "data_platform": {
+        "field_types": {
+          "metadata": "object"
+        }
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-051",
+    "category": "data_platform",
+    "name": "Array mismatch",
+    "input_format": "JSON",
+    "payload": "[{\"tags\":\"blue\"}]",
+    "context": {
+      "data_platform": {
+        "field_types": {
+          "tags": "array"
+        }
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "FIELD_TYPE_MISMATCH"
+  },
+  {
+    "id": "V2-052",
+    "category": "data_platform",
+    "name": "XML contract",
+    "input_format": "XML",
+    "payload": "<records><record><event_id>E1</event_id><service>orders</service></record></records>",
+    "context": {
+      "data_platform": {
+        "required_fields": [
+          "event_id",
+          "service"
+        ]
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-053",
+    "category": "data_platform",
+    "name": "Malformed XML",
+    "input_format": "XML",
+    "payload": "<records><record></records>",
+    "context": {},
+    "expected_status": "INVALID",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-054",
+    "category": "data_platform",
+    "name": "JSON scalar",
+    "input_format": "JSON",
+    "payload": "42",
+    "context": {},
+    "expected_status": "INVALID",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-055",
+    "category": "data_platform",
+    "name": "JSON object",
+    "input_format": "JSON",
+    "payload": "{\"event_id\":\"E1\"}",
+    "context": {},
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-056",
+    "category": "enterprise",
+    "name": "Allowed region",
+    "input_format": "JSON",
+    "payload": "[{\"region\":\"IN\"}]",
+    "context": {
+      "enterprise": {
+        "allowed_values": {
+          "region": [
+            "IN",
+            "US"
+          ]
+        }
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-057",
+    "category": "enterprise",
+    "name": "Unknown region",
+    "input_format": "JSON",
+    "payload": "[{\"region\":\"XX\"}]",
+    "context": {
+      "enterprise": {
+        "allowed_values": {
+          "region": [
+            "IN",
+            "US"
+          ]
+        }
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "VALUE_NOT_IN_REFERENCE_SET"
+  },
+  {
+    "id": "V2-058",
+    "category": "enterprise",
+    "name": "Allowed currency",
+    "input_format": "CSV",
+    "payload": "account,currency\nA1,INR\n",
+    "context": {
+      "enterprise": {
+        "allowed_values": {
+          "currency": [
+            "INR",
+            "USD"
+          ]
+        }
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-059",
+    "category": "enterprise",
+    "name": "Unsupported currency",
+    "input_format": "CSV",
+    "payload": "account,currency\nA1,XYZ\n",
+    "context": {
+      "enterprise": {
+        "allowed_values": {
+          "currency": [
+            "INR",
+            "USD"
+          ]
+        }
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "VALUE_NOT_IN_REFERENCE_SET"
+  },
+  {
+    "id": "V2-060",
+    "category": "enterprise",
+    "name": "Missing optional region",
+    "input_format": "JSON",
+    "payload": "[{\"account\":\"A1\"}]",
+    "context": {
+      "enterprise": {
+        "allowed_values": {
+          "region": [
+            "IN",
+            "US"
+          ]
+        }
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-061",
+    "category": "enterprise",
+    "name": "Mixed regions",
+    "input_format": "JSON",
+    "payload": "[{\"region\":\"IN\"},{\"region\":\"XX\"}]",
+    "context": {
+      "enterprise": {
+        "allowed_values": {
+          "region": [
+            "IN",
+            "US"
+          ]
+        }
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "VALUE_NOT_IN_REFERENCE_SET"
+  },
+  {
+    "id": "V2-062",
+    "category": "enterprise",
+    "name": "XML region",
+    "input_format": "XML",
+    "payload": "<records><record><region>IN</region></record></records>",
+    "context": {
+      "enterprise": {
+        "allowed_values": {
+          "region": [
+            "IN",
+            "US"
+          ]
+        }
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-063",
+    "category": "enterprise",
+    "name": "Allowed tenant",
+    "input_format": "JSON",
+    "payload": "[{\"tenant\":\"tenant-01\"}]",
+    "context": {
+      "enterprise": {
+        "allowed_values": {
+          "tenant": [
+            "tenant-01",
+            "tenant-02"
+          ]
+        }
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-064",
+    "category": "enterprise",
+    "name": "Unknown tenant",
+    "input_format": "JSON",
+    "payload": "[{\"tenant\":\"tenant-99\"}]",
+    "context": {
+      "enterprise": {
+        "allowed_values": {
+          "tenant": [
+            "tenant-01",
+            "tenant-02"
+          ]
+        }
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "VALUE_NOT_IN_REFERENCE_SET"
+  },
+  {
+    "id": "V2-065",
+    "category": "enterprise",
+    "name": "Empty reference list",
+    "input_format": "JSON",
+    "payload": "[{\"region\":\"IN\"}]",
+    "context": {
+      "enterprise": {
+        "allowed_values": {
+          "region": []
+        }
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": "VALUE_NOT_IN_REFERENCE_SET"
+  },
+  {
+    "id": "V2-066",
+    "category": "enterprise",
+    "name": "No enterprise rule",
+    "input_format": "JSON",
+    "payload": "[{\"region\":\"anywhere\"}]",
+    "context": {},
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  },
+  {
+    "id": "V2-067",
+    "category": "enterprise",
+    "name": "CSV tenant",
+    "input_format": "CSV",
+    "payload": "tenant,status\ntenant-02,active\n",
+    "context": {
+      "enterprise": {
+        "allowed_values": {
+          "tenant": [
+            "tenant-01",
+            "tenant-02"
+          ]
+        }
+      }
+    },
+    "expected_status": "SUCCESS",
+    "expected_issue_code": null
+  }
+]
